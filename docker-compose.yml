@@ -10,6 +10,8 @@ services:
     tty: true # for docker run -t
     container_name: node-sample-app-container
     restart: unless-stopped
+    ports: 
+        - "5000:5000"
     # networks:
     #   - app-network
 
