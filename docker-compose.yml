@@ -1,31 +1,34 @@
-version: '3'
+version: '3.8'
 
 services:
-  nodejs:
+  nodeserver:
     build:
       context: .
       dockerfile: Dockerfile
     image: node-sample-app
     container_name: node-sample-app-container
     restart: unless-stopped
-    networks:
-      - app-network
+    # networks:
+    #   - app-network
 
-  webserver:
+  nginx-webserver:
     image: nginx:mainline-alpine
-    container_name: webserver
-    restart: unless-stopped
+    container_name: nginx-webserver
+    restart: always
+    build:
+        context: ./nginx
+        dockerfile: Dockerfile
     ports:
       - "80:80"
-    volumes:
-      - web-root:/var/www/html
-      - ./nginx:/etc/nginx/conf.d
-    #   - certbot-etc:/etc/letsencrypt
-    #   - certbot-var:/var/lib/letsencrypt
-    depends_on:
-      - nodejs
-    networks:
-      - app-network
+    # volumes:
+    #   - web-root:/var/www/html
+    #   - ./nginx:/etc/nginx/conf.d
+    # #   - certbot-etc:/etc/letsencrypt
+    # #   - certbot-var:/var/lib/letsencrypt
+    # depends_on:
+    #   - nodejs
+    # networks:
+    #   - app-network
 
 #   certbot:
 #     image: certbot/certbot
