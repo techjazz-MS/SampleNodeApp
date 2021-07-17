@@ -1,8 +1,14 @@
 body {
     padding-top: 5rem;
     font-family: 'Varela Round', sans-serif;
-  }
-  .starter-template {
+}
+
+.starter-template {
     padding: 3rem 1.5rem;
     text-align: center;
-  }
+}
+
+.counter {
+    display: flex;
+    justify-content: center;	
+}
