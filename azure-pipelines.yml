@@ -17,5 +17,5 @@ steps:
 
 - script: |
     npm install
-    npm run start-prod
-  displayName: 'npm install and build'
+    npm test
+  displayName: 'Running npm install and tests'
